@@ -1,6 +1,9 @@
 package com.pruebas.banco.entity;
 
 import java.math.BigDecimal;
+import java.util.Objects;
+
+import com.pruebas.banco.exceptions.SaldoInsuficienteException;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -53,6 +56,36 @@ public class Cuenta {
 
 	public void setSaldo(BigDecimal saldo) {
 		this.saldo = saldo;
+	}
+
+	public void realizarDebito(BigDecimal monto) {
+		BigDecimal nuevosaldo = this.saldo.subtract(monto);
+		if (nuevosaldo.compareTo(BigDecimal.ZERO) < 0) {
+			throw new SaldoInsuficienteException("Saldo insuficiente");
+		}
+		this.saldo = nuevosaldo;
+	}
+
+	public void realizarCredito(BigDecimal monto) {
+		this.saldo = saldo.add(monto);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nombre, saldo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cuenta other = (Cuenta) obj;
+		return Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(saldo, other.saldo);
 	}
 
 }
