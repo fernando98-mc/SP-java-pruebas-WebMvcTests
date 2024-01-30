@@ -7,11 +7,11 @@ import com.pruebas.banco.entity.Cuenta;
 
 public interface CuentaServicio {
 
-	public List<Cuenta> listarCuentas();
+	public List<Cuenta> listAll();
 
-	public Cuenta buscarCuentaPorID(Long id);
+	public Cuenta findByID(Long id);
 
-	public Cuenta guardarCuenta(Cuenta cuenta);
+	public Cuenta saveAccount(Cuenta cuenta);
 
 	public int revisarTotalTransferencias(Long BancoID);
 
