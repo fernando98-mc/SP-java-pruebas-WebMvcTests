@@ -9,7 +9,7 @@ import com.pruebas.banco.entity.Cuenta;
 
 public interface CuentaRepositorio extends JpaRepository<Cuenta, Long> {
 
-	@Query("SELECT c FROM Cuenta c WHERE c.persona=?1")
+	@Query("select c from Cuenta c where c.persona=?1")
 	public Optional<Cuenta> findByPersona(String persona);
 	
 }
