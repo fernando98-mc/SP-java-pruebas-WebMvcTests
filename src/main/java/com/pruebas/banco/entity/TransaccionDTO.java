@@ -10,7 +10,7 @@ public class TransaccionDTO {
 
 	private BigDecimal monto;
 
-	private Long bandoID;
+	private Long bancoID;
 
 	public Long getCuentaOrigenID() {
 		return cuentaOrigenID;
@@ -36,12 +36,12 @@ public class TransaccionDTO {
 		this.monto = monto;
 	}
 
-	public Long getBandoID() {
-		return bandoID;
+	public Long getBancoID() {
+		return bancoID;
 	}
 
-	public void setBandoID(Long bandoID) {
-		this.bandoID = bandoID;
+	public void setBancoID(Long bandoID) {
+		this.bancoID = bandoID;
 	}
 
 }
